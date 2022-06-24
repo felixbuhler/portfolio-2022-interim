@@ -1,37 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Google Fonts Pre Connect -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin />
+  <link rel="preconnect"
+    href="https://fonts.googleapis.com" />
   <!-- Meta Tags -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible"
+    content="IE=edge" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0" />
 
   <!-- Fonts Links (Roboto 400, 500 and 700 included) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet" />
 
-  <!-- CSS Files Links -->
-  <style></style>
+  <!-- CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
+    :root {
+      --color-black: rgb(29, 29, 29);
+      --color-accent: rgb(0, 255, 0);
+      --padding: 10px;
+      --font-size: 14px;
+    }
+
+    body {
+      font-family: "Inter", Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      background: rgb(236, 236, 236);
+      font-size: var(--font-size);
+    }
+
+    info {
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
+      position: relative;
+      width: auto;
+      top: var(--padding);
+      left: var(--padding);
+    }
+
+    a {
+      color: inherit;
+      border-bottom: 1px solid var(--color-black);
+      text-decoration: none;
+    }
+
+    .tt {
+      display: none;
+    }
+
+    .ttt::after {
+      content: "|";
+      animation: pulse 0.5s infinite;
+      color: transparent;
+      border-right: 1px solid var(--color-black);
+      margin-left: -4px;
+    }
+
+    @keyframes pulse {
+      0% {
+        border-right: 1px solid var(--color-black);
+      }
+
+      50% {
+        border-right: 1px solid transparent;
+      }
+
+      100% {
+        border-right: 1px solid var(--color-black);
+      }
+    }
+
+    art {
+      margin-right: 0px;
+    }
+
+    art,
+    art h1 {
+      font-size: inherit;
+      font-weight: inherit;
+      display: inline-block;
+    }
+  </style>
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+    integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+    crossorigin="anonymous"></script>
+  <script src="index.min.js"></script>
+
+  <script>
+    function startTime() {
+      var e = new Date(),
+        t = e.getHours(),
+        n = e.getMinutes(),
+        s = e.getSeconds(),
+        n = checkTime(n),
+        s = checkTime(s);
+      document.getElementById("time").innerHTML =
+        t +
+        "<span class='time-dots'>:</span>" +
+        n +
+        "<span class='time-dots'>:</span>" +
+        s;
+      setTimeout(startTime, 500);
+    }
+
+    function checkTime(e) {
+      return e < 10 && (e = "0" + e), e;
+    }
+  </script>
   <!-- Title -->
   <title>Felix Buhler && Art Director & Designer</title>
 </head>
-<body>
-  <header>
-    <h1>HTML5 Template</h1>
-  </header>
 
-  <main>
-    <p>This is a simple HTML5 Template</p>
-  </main>
-
-  <footer>
-    <p>HTML5 Template</p>
-  </footer>
-
-  <noscript>Your browser don't support JavaScript!</noscript>
-  <script src="./scripts.js"></script>
+<body onload="startTime();">
+  <info>
+    Felix Buhler
+    <br><br>
+    Art Director and Designer, living in Kreuzberg, Berlin [DE].
+    <br>
+    I do
+    <art>
+      <p class="tt">Graphic Design</p>
+      <p class="tt">Webdesign</p>
+      <p class="tt">Print Design</p>
+      <p class="tt">UX & UI Design</p>
+      <p class="tt">Editorial</p>
+      <p class="tt">Campaign</p>
+      <p class="tt">Motion Design</p>
+      <p class="tt">AR</p>
+      <p class="tt">Coding</p>
+      <h1 class="ttt"></h1>
+    </art>.
+    <br /><br />Currently I am rebuilding my online portfolio.<br><br>
+    Meanwhile you can view my work on
+    <a target="_blank"
+      href="https://www.instagram.com/felixbuhler/"
+      alt="Felix Buhler on Instagram">Instagram</a>
+    or on
+    <a target="_blank"
+      href="https://www.behance.net/felix-buhler"
+      alt="Felix Buhler on Behance">Behance</a>. You can also view my old portfolio on <a target="_blank"
+      href="https://felixbuhler.github.io/portfolio-2021/"
+      alt="Old Portfolio on GitHub">GitHub</a>.<br /><br />
+    <time id="time"></time> &copy; 2022
+  </info>
+  <script>
+    let $elements = $("art .tt");
+    $(".ttt").tickerText($elements, 0, 3, 30, 1, 0.5, 2, false, "timerpause", "timerstop");
+  </script>
 </body>
+
 </html>
